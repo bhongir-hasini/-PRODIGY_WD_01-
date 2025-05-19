@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Interactive Navigation Menu Enhanced</title>
+<style>
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 2000px; 
+    background: #f5f5f7;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: transparent;
+    transition: background 0.5s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+    box-shadow: none;
+  }
+  nav.scrolled {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    box-shadow: 0 4px 15px rgba(0, 114, 255, 0.6);
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    display: flex;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+  }
+  nav ul li {
+    margin: 0 15px;
+    position: relative;
+  }
+  nav ul li a {
+    color: #222831;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease,
+      transform 0.3s ease,
+      text-shadow 0.3s ease;
+    display: inline-block;
+    position: relative;
+  }
+  nav.scrolled ul li a {
+    color: #e0eaff;
+  }
+
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 0%;
+    height: 2px;
+    background: #00ffe0;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  nav ul li a:hover::after,
+  nav ul li a:focus::after {
+    width: 100%;
+  }
+
+  nav ul li a:hover,
+  nav ul li a:focus {
+    background-color: rgba(0, 198, 255, 0.2);
+    color: #00ffe0;
+    text-shadow:
+      0 0 8px #00ffe0,
+      0 0 12px #00ffe0;
+    transform: scale(1.05);
+    outline: none;
+  }
+
+  @media (max-width: 600px) {
+    nav ul {
+      padding: 0 10px;
+      height: 50px;
+    }
+    nav ul li {
+      margin: 0 8px;
+    }
+    nav ul li a {
+      font-size: 0.9rem;
+      padding: 6px 8px;
+    }
+  }
+
+  main {
+    padding: 70px 20px 20px; 
+    max-width: 900px;
+    margin: 0 auto;
+    color: #222831;
+  }
+</style>
+</head>
+<body>
+<nav id="mainNav" aria-label="Primary Navigation">
+  <ul>
+    <li><a href="#home" tabindex="0">Home</a></li>
+    <li><a href="#about" tabindex="0">About</a></li>
+    <li><a href="#services" tabindex="0">Services</a></li>
+    <li><a href="#portfolio" tabindex="0">Portfolio</a></li>
+    <li><a href="#contact" tabindex="0">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="home" style="height: 500px;">
+    <h1>Welcome to Our Website</h1>
+    <p>This is the home section. Scroll down to see the navigation menu background change to a stunning gradient with glowing effects when scrolled.</p>
+  </section>
+  <section id="about" style="height: 500px;">
+    <h2>About Us</h2>
+    <p>Information about us goes here.</p>
+  </section>
+  <section id="services" style="height: 500px;">
+    <h2>Services</h2>
+    <p>Details about our services.</p>
+  </section>
+  <section id="portfolio" style="height: 500px;">
+    <h2>Portfolio</h2>
+    <p>Our past work and projects showcased here.</p>
+  </section>
+  <section id="contact" style="height: 500px;">
+    <h2>Contact</h2>
+    <p>Contact us through this section.</p>
+  </section>
+</main>
+
+<script>
+  (function() {
+    const nav = document.getElementById('mainNav');
+    
+    function onScroll() {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll(); 
+  })();
+</script>
+</body>
+</html>
